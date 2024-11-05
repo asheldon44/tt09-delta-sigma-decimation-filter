@@ -23,9 +23,9 @@ def sign_extend(bit_string, new_length):
     extension = sign_bit * (new_length - current_length)
     return extension + bit_string
 
-vcd = VCDVCD('./data/signals.vcd')
+vcd = VCDVCD('./tb.vcd')
 
-out = vcd['CIC_tb.d_out[23:0]']
+out = vcd['tb.uo_out[7:0]']
 tv = out.tv
 
 time = [float(row[0])*float(vcd.timescale["timescale"]) for row in tv]
