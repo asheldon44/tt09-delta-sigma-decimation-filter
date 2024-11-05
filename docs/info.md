@@ -9,12 +9,15 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+Digital low pass and decimation filter for use at the output of a delta-sigma ADC.
+Analog will hopefully be included on the next shuttle.
 
 ## How to test
 
-Explain how to use your project
+Input 1 bit data on ui_in[0] at 50MHz representing the output of a delta-sigma modulator
+Will generate 16 bit data on the GPIOs at 50MHz/64=781.25kHz
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+TBD
+
