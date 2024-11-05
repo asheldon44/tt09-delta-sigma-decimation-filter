@@ -26,13 +26,14 @@ project:
     - "op_differentiator.v"
     - "divideby2.v"
     - "divideby64.v"
+    - "outmux.v"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
   # Inputs
   ui[0]: "dec_in"
-  ui[1]: ""
-  ui[2]: ""
+  ui[1]: "select[0]"
+  ui[2]: "select[1]"
   ui[3]: ""
   ui[4]: ""
   ui[5]: ""
@@ -40,24 +41,24 @@ pinout:
   ui[7]: ""
 
   # Outputs
-  uo[0]: "dec_out[8]"
-  uo[1]: "dec_out[9]"
-  uo[2]: "dec_out[10]"
-  uo[3]: "dec_out[11]"
-  uo[4]: "dec_out[12]"
-  uo[5]: "dec_out[13]"
-  uo[6]: "dec_out[14]"
-  uo[7]: "dec_out[15]"
+  uo[0]: "mux_out[0]"
+  uo[1]: "mux_out[1]"
+  uo[2]: "mux_out[2]"
+  uo[3]: "mux_out[3]"
+  uo[4]: "mux_out[4]"
+  uo[5]: "mux_out[5]"
+  uo[6]: "mux_out[6]"
+  uo[7]: "mux_out[7]"
 
   # Bidirectional pins
-  uio[0]: "dec_out[0]"
-  uio[1]: "dec_out[1]"
-  uio[2]: "dec_out[2]"
-  uio[3]: "dec_out[3]"
-  uio[4]: "dec_out[4]"
-  uio[5]: "dec_out[5]"
-  uio[6]: "dec_out[6]"
-  uio[7]: "dec_out[7]"
+  uio[0]: ""
+  uio[1]: ""
+  uio[2]: ""
+  uio[3]: ""
+  uio[4]: ""
+  uio[5]: ""
+  uio[6]: ""
+  uio[7]: ""
 
 # Do not change!
 yaml_version: 6

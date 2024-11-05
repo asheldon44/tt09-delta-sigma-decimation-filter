@@ -5,7 +5,7 @@
 SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = project.v
+PROJECT_SOURCES = $(shell find $(SRC_DIR) -name "*.v" -exec basename {} \;)
 
 ifneq ($(GATES),yes)
 
