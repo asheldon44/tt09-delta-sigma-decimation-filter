@@ -39,12 +39,12 @@ module tt_um_asheldon44_dsm_decimation_filter (
   assign uio_out = dec_out[7:0];
 
 
-  clk_divider divideby64(.clk(clk),
+  divideby64 divideby64(.clk(clk),
                          .rstN(rst_n),
                          .clkOut(div_clk)
                         );
 
-  decimation_filter CIC(.clk(clk),
+  CIC CIC(.clk(clk),
                         .dec_clk(div_clk),
                         .rst(~rst_n),
                         .in(dec_in),
