@@ -1,6 +1,6 @@
 # Tiny Tapeout project information
 project:
-  title:        "Detla-Sigma ADC Decimation Filter"      # Project title
+  title:        "Delta-Sigma ADC Decimation Filter"      # Project title
   author:       "Alexander Sheldon"      # Your name
   discord:      "alexshel44"      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
   description:  "Decimation filter for output of a delta-sigma ADC."      # One line description of what your project does

@@ -19,6 +19,8 @@ module tt_um_asheldon44_dsm_decimation_filter (
   // List all unused inputs to prevent warnings
   wire _unused = &{ena, 1'b0};
 
+  wire dec_in;
+
   // ADC 1 bit inpput
   assign dec_in = ui_in[0];
 
