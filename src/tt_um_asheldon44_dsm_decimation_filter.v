@@ -25,9 +25,10 @@ module tt_um_asheldon44_dsm_decimation_filter (
 
   wire [1:0] select;
 
-  // ADC 1 bit inpput
+  // ADC 1 bit input
   assign dec_in = ui_in[0];
   assign select = ui_in[2:1];
+  assign uio_out = 8'b00000000;
 
   // Output of the decimation filter (Z in decimation_filter module)
   wire [23:0] dec_out; 
