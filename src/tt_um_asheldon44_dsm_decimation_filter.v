@@ -17,7 +17,7 @@ module tt_um_asheldon44_dsm_decimation_filter (
 );
 
   // List all unused inputs to prevent warnings
-  wire _unused = &{ena, 1'b0};
+  wire _unused = &{ena, 1'b0, uio_in};
 
   wire dec_in;
 
