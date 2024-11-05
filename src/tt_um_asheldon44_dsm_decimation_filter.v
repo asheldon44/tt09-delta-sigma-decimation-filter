@@ -21,7 +21,7 @@ module tt_um_asheldon44_dsm_decimation_filter (
 
   wire dec_in;
 
-  wire div_clk
+  wire div_clk;
 
   // ADC 1 bit inpput
   assign dec_in = ui_in[0];
