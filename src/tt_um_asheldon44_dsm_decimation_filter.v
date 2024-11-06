@@ -17,15 +17,13 @@ module tt_um_asheldon44_dsm_decimation_filter (
 );
 
   // List all unused inputs to prevent warnings
-  wire _unused = &{ena, 1'b0, uio_in};
+  wire _unused = &{ena, 1'b0, uio_in, ui_in[7:3]};
 
   wire dec_in;
 
   wire div_clk;
 
   wire div_clk8x;
-
-  wire [1:0] select;
 
   // Enable the all uio pins for input
   assign uio_oe = 8'b00000101;
