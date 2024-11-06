@@ -32,8 +32,8 @@ project:
 pinout:
   # Inputs
   ui[0]: "dec_in"
-  ui[1]: "select[0]"
-  ui[2]: "select[1]"
+  ui[1]: ""
+  ui[2]: ""
   ui[3]: ""
   ui[4]: ""
   ui[5]: ""

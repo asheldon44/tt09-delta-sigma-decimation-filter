@@ -17,7 +17,7 @@ module tt_um_asheldon44_dsm_decimation_filter (
 );
 
   // List all unused inputs to prevent warnings
-  wire _unused = &{ena, 1'b0, uio_in, ui_in[7:3]};
+  wire _unused = &{ena, 1'b0, uio_in, ui_in[7:1]};
 
   wire dec_in;
 
@@ -30,7 +30,6 @@ module tt_um_asheldon44_dsm_decimation_filter (
 
   // ADC 1 bit input
   assign dec_in = ui_in[0];
-  assign select = ui_in[2:1];
 
   assign uio_out[7:3] = 5'b00000;
   assign uio_out[2] = div_clk;
