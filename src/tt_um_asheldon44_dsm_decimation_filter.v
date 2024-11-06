@@ -23,29 +23,34 @@ module tt_um_asheldon44_dsm_decimation_filter (
 
   wire div_clk;
 
+  wire div_clk8x;
+
   wire [1:0] select;
+
+  // Enable the all uio pins for input
+  assign uio_oe = 8'b00000101;
 
   // ADC 1 bit input
   assign dec_in = ui_in[0];
   assign select = ui_in[2:1];
-  assign uio_out = 8'b00000000;
+
+  assign uio_out[7:3] = 5'b00000;
+  assign uio_out[2] = div_clk;
+  assign uio_out[1] = 1'b0;
+  assign uio_out[0] = div_clk8x;
+  
 
   // Output of the decimation filter (Z in decimation_filter module)
   wire [23:0] dec_out; 
   wire [7:0] mux_out;
 
-  // Enable the all uio pins for input
-  assign uio_oe = 8'b00000000;
-    
   // Assign most significant 8 bits to the dedicated output pins
   assign uo_out = mux_out[7:0];
 
-  // Assign less significant 8 bits to the general-purpose IO pins
-
-
   divideby64 divideby64(.clk(clk),
                          .rstN(rst_n),
-                         .clkOut(div_clk)
+                         .clkOut(div_clk),
+                         .clkOut8x(div_clk8x)
                         );
 
   CIC CIC(.clk(clk),
@@ -55,10 +60,11 @@ module tt_um_asheldon44_dsm_decimation_filter (
                         .out(dec_out)
                       );
 
-  outmux outmux (.sel(select),
-                  .d0(dec_out[7:0]),
+  outmux outmux (.clk(div_clk8x),
+                  .rst(~rst_n),
+                  .d0(dec_out[23:16]),
                   .d1(dec_out[15:8]),
-                  .d2(dec_out[23:16]),
+                  .d2(dec_out[7:0]),
                   .d3(8'b00000000),
                   .y(mux_out)
                   );

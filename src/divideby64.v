@@ -1,7 +1,8 @@
 module divideby64 (
   input  logic clk,
   input  logic rstN,
-  output logic clkOut
+  output logic clkOut,
+  output logic clkOut8x
 );
 
   logic clkOutDiv1;
@@ -9,6 +10,8 @@ module divideby64 (
   logic clkOutDiv3;
   logic clkOutDiv4;
   logic clkOutDiv5;
+
+  assign clkOut8x = clkOutDiv3;
 
   divideby2 divideBy2_1 (
     .clk(clk),

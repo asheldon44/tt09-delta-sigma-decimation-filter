@@ -51,9 +51,9 @@ pinout:
   uo[7]: "mux_out[7]"
 
   # Bidirectional pins
-  uio[0]: ""
+  uio[0]: "div_clk8x"
   uio[1]: ""
-  uio[2]: ""
+  uio[2]: "div_clk"
   uio[3]: ""
   uio[4]: ""
   uio[5]: ""
