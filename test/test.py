@@ -9,6 +9,8 @@ from cocotb.triggers import ClockCycles
 async def test_project(dut):
     dut._log.info("Start")
 
+    data_sample = 0
+
     # Set the clock period to 20 ns (50 MHz)
     clock = Clock(dut.clk, 20, units="ns")
     cocotb.start_soon(clock.start())
@@ -32,6 +34,21 @@ async def test_project(dut):
             value = int(line.strip())  # Assuming the file contains integer values
             dut.ui_in.value = (dut.ui_in.value & ~1) + (value & 1)
             await ClockCycles(dut.clk, 1)
+
+    # # TODO Read in the data here
+    # while done_flag == 0:
+    #     dut._log.info("Logging Data")
+    #     await cocotb.triggers.RisingEdge(dut.uio_out[2])    # Wait for the first output value to be ready
+
+    #     await cocotb.triggers.RisingEdge(dut.uio_out[0])    
+    #     data_sample = data_sample + dut.uo_out.value.integer << 16
+    #     await cocotb.triggers.RisingEdge(dut.uio_out[0])  
+    #     data_sample = data_sample + dut.uo_out.value.integer << 8
+    #     await cocotb.triggers.RisingEdge(dut.uio_out[0])
+    #     data_sample = data_sample + dut.uo_out.value.integer
+
+    #     with open("./out.txt", "w") as file:
+    #         file.write(str(data_sample) + "\n")
 
     # Wait for one clock cycle to see the output values
     await ClockCycles(dut.clk, 5)

@@ -4,12 +4,16 @@
 /* This testbench just instantiates the module and makes some convenient wires
    that can be driven / tested by the cocotb test.py.
 */
+
+integer fd;
+
 module tb ();
 
   // Dump the signals to a VCD file. You can view it with gtkwave.
   initial begin
     $dumpfile("tb.vcd");
     $dumpvars(0, tb);
+    fd = $fopen("outdata.txt", "w");
     #1;
   end
 
@@ -26,6 +30,21 @@ module tb ();
   wire VPWR = 1'b1;
   wire VGND = 1'b0;
 `endif
+  reg [23:0] out_code;
+  reg out_valid;
+
+  always @(posedge uio_out[2]) begin
+    out_valid <= 0;
+    #320;
+    out_code[23:16] <= uo_out[7:0];
+    #160;
+    out_code[15:8] <= uo_out[7:0];
+    #160;
+    out_code[7:0] <= uo_out[7:0];
+    #1;
+    out_valid <=1;
+    $fwrite(fd, "%d,%d\n", $time, out_code);
+  end
 
   // Replace tt_um_example with your module name:
   tt_um_asheldon44_dsm_decimation_filter user_project (

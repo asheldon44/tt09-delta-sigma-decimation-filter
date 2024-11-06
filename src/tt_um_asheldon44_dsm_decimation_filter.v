@@ -60,7 +60,7 @@ module tt_um_asheldon44_dsm_decimation_filter (
                         .out(dec_out)
                       );
 
-  outmux outmux (.clk(div_clk8x),
+  outmux outmux (.clk(~div_clk8x),
                   .rst(~rst_n),
                   .d0(dec_out[23:16]),
                   .d1(dec_out[15:8]),
