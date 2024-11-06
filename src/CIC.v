@@ -3,8 +3,6 @@
 //`include "./verilog_src/integrator.v"
 //`include "./verilog_src/op_differentiator.v"
 
-`timescale 1ns/1ns
-
 module CIC (
     input wire clk,
     input wire dec_clk,
