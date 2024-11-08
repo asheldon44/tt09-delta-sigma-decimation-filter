@@ -4,10 +4,10 @@ from scipy.signal import butter, filtfilt
 
 # Parameters
 fs = 50e6  # Sampling frequency (50 MHz)
-f = 20e3  # Sine wave frequency (100 kHz)
-duration = 250e-6  # Duration of the signal (100 us)
+f = 1e3  # Sine wave frequency (100 kHz)
+duration = 0.1  # Duration of the signal (100 us)
 
-amp = 0.5  # Amplitude of the sine wave
+amp = 0.4  # Amplitude of the sine wave
 offset = 0.5  # Offset of the sine wave
 
 # Time array
@@ -17,14 +17,18 @@ t = np.arange(0, duration, 1/fs)
 sine_wave = amp * np.sin(2 * np.pi * f * t) + offset
 
 # Delta-Sigma Modulation
-integrator = 0
+
+integrator1 = 0
+integrator2 = 0
 bitstream = []
 
 for sample in sine_wave:
-    integrator += sample - (bitstream[-1] if bitstream else 0.5)
-    bit = 1 if integrator >= 0 else 0
+    integrator1 += sample - (bitstream[-1] if bitstream else 0.5)
+    integrator2 += integrator1 - (bitstream[-1] if bitstream else 0.5)
+    bit = 1 if integrator2 >= 0 else 0
     bitstream.append(bit)
-    integrator -= bit
+    integrator1 -= bit
+    integrator2 -= bit
 
 # Convert bitstream to numpy array
 bitstream = np.array(bitstream)
